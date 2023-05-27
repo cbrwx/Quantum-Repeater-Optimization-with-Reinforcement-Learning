@@ -217,31 +217,6 @@ def multiplexing(qc, channels, names=None):
     for i in range(0, qc.num_qubits, num_qubits):
         create_Bell_pair(qc, channels[i], channels[i + 1])
 
-def dijkstra_shortest_path(paths, source, destination):
-    dist = {vertex: float('infinity') for vertex in paths}
-    previous_vertices = {vertex: None for vertex in paths}
-    dist[source] = 0
-    vertices = paths.copy()
-
-    while vertices:
-        current_vertex = min(vertices, key=lambda vertex: dist[vertex])
-        vertices.remove(current_vertex)
-        if dist[current_vertex] == float('infinity'):
-            break
-
-        for neighbor, cost in paths[current_vertex].items():
-            alternative_route = dist[current_vertex] + cost
-            if alternative_route < dist[neighbor]:
-                dist[neighbor] = alternative_route
-                previous_vertices[neighbor] = current_vertex
-
-    path, current_vertex = [], destination
-    while previous_vertices[current_vertex] is not None:
-        path.append((previous_vertices[current_vertex], current_vertex))
-        current_vertex = previous_vertices[current_vertex]
-
-    return path[::-1]
-
 def error_correction_circuit(n_repeater_stations):
     circuits = []
     qubit_trios = [QuantumRegister(3, name=f"q_{i}") for i in range(n_repeater_stations)]
@@ -252,15 +227,6 @@ def error_correction_circuit(n_repeater_stations):
         error_corrected_reg = error_correction(qc, q_regs, [qc.cregs[idx]] * len(q_regs))
         circuits.append(qc)
     return circuits
-
-# Graph with nodes as qubit positions and edges as path cost (lower is better)
-paths = {
-    0: {1: 5, 2: 10},
-    1: {3: 10},
-    2: {4: 10},
-    3: {5: 5},
-    4: {5: 5}
-}
 
 source = 0
 destination = 5
