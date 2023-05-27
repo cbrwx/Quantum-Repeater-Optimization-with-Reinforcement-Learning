@@ -5,6 +5,7 @@ from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, execute, 
 from qiskit.quantum_info import random_unitary
 import numpy as np
 import uuid
+import os
 
 
 class QuantumRepeaterEnv(gym.Env):
@@ -136,7 +137,12 @@ num_repeater_stations = 3
 
 # Initialize the environment and the agent
 env = QuantumRepeaterEnv(paths)
-model = PPO("MlpPolicy", env, verbose=1)
+
+# Check if pre-existing model exists, if so, load it
+if os.path.isfile("best_quantum_repeater_model.zip"):
+    model = PPO.load("best_quantum_repeater_model")
+else:
+    model = PPO("MlpPolicy", env, verbose=1)
 
 # Define best reward and the evaluation interval
 best_reward = -np.inf
