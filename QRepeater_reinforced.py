@@ -138,8 +138,26 @@ num_repeater_stations = 3
 env = QuantumRepeaterEnv(paths)
 model = PPO("MlpPolicy", env, verbose=1)
 
-# Train the agent
-model.learn(total_timesteps=10000)
+# Define best reward and the evaluation interval
+best_reward = -np.inf
+evaluation_interval = 1000  # Evaluate the model every 1000 steps
+total_timesteps = 10000  # Total number of steps for training
+
+for timestep in range(0, total_timesteps, evaluation_interval):
+    # Train the agent
+    model.learn(total_timesteps=evaluation_interval)
+
+    # Save the model
+    model.save("quantum_repeater_model")
+
+    # Evaluate the model and update the best reward
+    avg_reward = np.mean([model.evaluate_policy(env, deterministic=True)[0] for _ in range(10)])
+    if avg_reward > best_reward:
+        best_reward = avg_reward
+        model.save("best_quantum_repeater_model")
+
+# Load the best model
+model = PPO.load("best_quantum_repeater_model")
 
 # Use the trained agent to operate the quantum repeater
 observation = env.reset()
