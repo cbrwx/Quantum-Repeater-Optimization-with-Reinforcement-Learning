@@ -23,6 +23,6 @@ This project requires Python 3.7 or later, OpenAI's Gym, Stable Baselines, and T
 The primary project code is housed in one file, which comprises the code necessary to establish the environment, define the reinforcement learning model, and initiate the training process. Once the RL agent has undergone sufficient training, it can be tested within the simulated environment to evaluate its performance.
 
 ## Potential for Future Adaptation
-While the current iteration of this project involves a simulated quantum repeater environment, it could be further adapted to interact with actual quantum hardware, such as IBM's quantum computers. Such an adaptation would necessitate adjusting the environment to reflect the constraints and characteristics of the real quantum device, along with other modifications and cheese cake. 
+While the current iteration of this project involves a simulated quantum repeater environment, it could be further adapted to interact with actual quantum hardware, such as IBM's quantum computers. Such an adaptation would necessitate adjusting the environment to reflect the constraints and characteristics of the real quantum device, along with other modifications or magical rings. 
 
 .cbrwx
