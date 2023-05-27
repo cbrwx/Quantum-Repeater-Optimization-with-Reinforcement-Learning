@@ -71,3 +71,5 @@ Finally, multiple quantum circuits are set up for each repeater station on the p
 
 Note that the overall objective of this project is to explore and showcase how to integrate quantum technologies with classical reinforcement learning techniques. In the process, it demonstrates how to work with quantum circuits, quantum gates, and quantum operations using the Qiskit library, and how to train a reinforcement learning model using Stable Baselines. This code does not represent a practical quantum network, but it serves as a starting pit(with mud) for anyone looking to explore this intersection of quantum computing and reinforcement learning.
 
+.cbrwx
+
