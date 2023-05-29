@@ -7,6 +7,7 @@ from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, execute, 
 from qiskit.quantum_info import random_unitary
 from qiskit.circuit.library import HGate, XGate, ZGate
 from stable_baselines3 import PPO
+from qiskit import QiskitError
 
 class QuantumRepeaterEnv(gym.Env):
     def __init__(self, paths):
@@ -36,17 +37,18 @@ class QuantumRepeaterEnv(gym.Env):
     def step(self, action):
         if action not in [0,1]:
             raise ValueError(f"Illegal action: {action}. Action must be either 0 (error correction) or 1 (entanglement purification).")
+        try:
+            if action == 0:
+                self.apply_error_correction()
+            else:
+                self.apply_entanglement_purification()
 
-        if action == 0:
-            self.apply_error_correction()
-        else:
-            self.apply_entanglement_purification()
-
-        observation = self.measure_channel_conditions()
-        reward = self.measure_transmission_fidelity()
-        done = reward >= 0.95
-
-        return observation, reward, done, {}
+            observation = self.measure_channel_conditions()
+            reward = self.measure_transmission_fidelity()
+            done = reward >= 0.95
+            return observation, reward, done, {}
+        except QiskitError as e:
+            raise RuntimeError("An error occurred while executing the quantum circuit: " + str(e))
 
     def reset(self):
         self.qc = self.initialize_quantum_circuit()
@@ -56,12 +58,16 @@ class QuantumRepeaterEnv(gym.Env):
         return observation
 
     def initialize_quantum_circuit(self):
-        qreg = QuantumRegister(6, name="q")
-        cregz = ClassicalRegister(1, name="cregz")
-        cregx = ClassicalRegister(1, name="cregx")
-        creg_same = ClassicalRegister(1, name="cr_same")
-        qc = QuantumCircuit(qreg, cregz, cregx, creg_same)
-        return qc
+        try:
+            qreg = QuantumRegister(6, name="q")
+            cregz = ClassicalRegister(1, name="cregz")
+            cregx = ClassicalRegister(1, name="cregx")
+            creg_same = ClassicalRegister(1, name="cr_same")
+            qc = QuantumCircuit(qreg, cregz, cregx, creg_same)
+            return qc
+        except QiskitError as e:
+            raise ValueError("Could not initialize quantum circuit: " + str(e))
+
 
     def apply_error_correction(self):
         error_correction_crs = [ClassicalRegister(1, name=f"cr_{i}") for i in range(1, 4)]
