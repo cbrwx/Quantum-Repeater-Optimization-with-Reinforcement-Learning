@@ -68,7 +68,6 @@ class QuantumRepeaterEnv(gym.Env):
         except QiskitError as e:
             raise ValueError("Could not initialize quantum circuit: " + str(e))
 
-
     def apply_error_correction(self):
         error_correction_crs = [ClassicalRegister(1, name=f"cr_{i}") for i in range(1, 4)]
         self.qc.add_register(*error_correction_crs)
