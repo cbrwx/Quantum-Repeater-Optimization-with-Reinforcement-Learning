@@ -2,7 +2,7 @@ Quantum Coherence Drive (QCD): A Macroscopic Application of Quantum Principles i
 
 Abstract
 
-The Quantum Coherence Drive (QCD) hypothesizes a spacecraft propulsion mechanism harnessing quantum coherence. By extrapolating quantum mechanics from the atomic to the macroscopic scale, QCD may offer advancements in propulsion, communication, and energy efficiency. This paper delves into the intricate mathematical foundations underscoring this theoretical proposal.
+The Quantum Coherence Drive (QCD) hypothesizes a spacecraft propulsion mechanism harnessing quantum coherence. By extrapolating quantum mechanics from the atomic to the macroscopic scale, QCD may offer advancements in propulsion, communication, and energy efficiency. This little text file delves into the intricate mathematical foundations underscoring this theoretical proposal.
 
 1. Introduction
 
