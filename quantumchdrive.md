@@ -106,5 +106,5 @@ Here, F_quantum represents the quantum force due to coherence changes. For maxim
 - The controlled extraction of energy from quantum decoherence is still theoretical.
 - Quantum threats within the Safety Field necessitate extensive research and understanding.
 
-Note: The provided framework remains theoretical and requires rigorous experimental validation. The QCD concept, while captivating, is still in its infancy and the derivations should be considered preliminary at best, 
+Note: The provided framework remains theoretical and requires rigorous experimental validation. The QCD concept, while fancy, is still in its infancy and the derivations should be considered preliminary at best, 
 cbrwx.
