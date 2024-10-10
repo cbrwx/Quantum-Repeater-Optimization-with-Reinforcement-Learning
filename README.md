@@ -2,7 +2,7 @@
 This QuantumRepeaterEnv class could form the main structure of the quantum repeater network. This network is a crucial part of quantum communication systems, which allows for long-distance quantum communication by repeating quantum information from station to station. The class is designed as a subclass of OpenAI's Gym environment, which enables reinforcement learning techniques to be used for the optimization of quantum repeater protocols.
 
 ## tl;dr
-The variable 'frodo' signifies the starting point of quantum information - analogous to Frodo being the carrier of the Ring at the start of his journey. 'Gandalf' serves as an intermediary step in the teleportation process, much like how Gandalf guides and assists Frodo on his mission. Finally, 'iluvatar', referring to the creator deity in Tolkien's universe, represents the final quantum state after teleportation, emphasizing the destination of the quantum information.
+The main goal of this code is to simulate and optimize a quantum internet-like network, exploring how we might build and manage large-scale quantum communication systems in the future.
 
 ## Class Initialization
 The QuantumRepeaterEnv class is initialized with a dictionary representing the network graph, where the keys of the dictionary represent the nodes of the graph and the values are another dictionary representing the connected nodes and the weights of the connections.
