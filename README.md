@@ -137,6 +137,5 @@ To run the simulation:
 2. Execute the main() function
 3. Examine the generated visualizations and metrics
 
-The simulation will produce performance charts, network visualizations, and evaluation metrics to help understand the behavior and efficiency of different quantum repeater protocols under various conditions.
-.cbrwx
+The simulation will produce performance charts, network visualizations, and evaluation metrics to help understand the behavior and efficiency of different quantum repeater protocols under various conditions.cbrwx
 
